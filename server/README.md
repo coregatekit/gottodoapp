@@ -1,4 +1,4 @@
-# Todo Application Server with gin-gonic
+# Todo Application Server with gin-gonic and sqlite
 
 ## Prerequisite
 
@@ -39,4 +39,4 @@ To start the application from build file
 ./build/server
 ```
 
-After start the application please visit ping path the verify server is starting correctly. [http://localhost:8080/api/ping](http://localhost:8080/api/ping)
+After start the application please visit ping path to verify server is starting correctly. [http://localhost:8080/api/ping](http://localhost:8080/api/ping)
