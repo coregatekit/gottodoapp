@@ -26,3 +26,13 @@ func (t *TodoHandler) GetAllTodos() ([]Todo, error) {
 
 	return todos, nil
 }
+
+func (t *TodoHandler) NewTodo(todo Todo) (Todo, error) {
+	t.db.Create(todo)
+
+	if t.db.Error != nil {
+		return Todo{}, t.db.Error
+	}
+
+	return todo, nil
+}
