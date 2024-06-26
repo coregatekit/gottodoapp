@@ -7,6 +7,17 @@
 
 ## Quick start
 
+Before start the application please set environment variable to specific database path.
+
+```bash
+DATABASE_URL=todo.db
+(.env file)
+
+or
+
+export DATABASE_URL=todo.db
+```
+
 After install all requirements use these command to start develop.
 The default port is `8080` visit [http://localhost:8080/](http://localhost:8080/)
 
