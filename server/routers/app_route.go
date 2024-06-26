@@ -1,6 +1,8 @@
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 func RouterRegister(router *gin.RouterGroup) {
 	router.GET("/ping", func(c *gin.Context) {
@@ -8,4 +10,6 @@ func RouterRegister(router *gin.RouterGroup) {
 			"message": "pong",
 		})
 	})
+
+	TodoRouters(router)
 }
