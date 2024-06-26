@@ -21,4 +21,5 @@ func ConnectDatabase() {
 }
 
 func MigrateDatabase() {
+	DB.AutoMigrate(&Todo{})
 }
