@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/coregatekit/gotodoapp/models"
 	"github.com/coregatekit/gotodoapp/models/validators"
@@ -42,4 +43,27 @@ func NewTodo(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, todo)
+}
+
+func UpdateTodoCompleted(c *gin.Context) {
+	var err error
+	var id int
+	idStr := c.Param("id")
+
+	id, err = strconv.Atoi(idStr)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	td := models.NewTodoHandler(models.DB)
+	err = td.UpdateCompleted(id)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Todo updated"})
 }
