@@ -36,3 +36,21 @@ func (t *TodoHandler) NewTodo(todo Todo) (Todo, error) {
 
 	return todo, nil
 }
+
+func (t *TodoHandler) UpdateCompleted(id int) error {
+	todo := Todo{}
+	t.db.First(&todo, id)
+
+	if t.db.Error != nil {
+		return t.db.Error
+	}
+
+	todo.Completed = !todo.Completed
+	t.db.Save(&todo)
+
+	if t.db.Error != nil {
+		return t.db.Error
+	}
+
+	return nil
+}
