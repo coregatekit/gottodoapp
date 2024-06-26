@@ -13,13 +13,13 @@ The default port is `8080` visit [http://localhost:8080/](http://localhost:8080/
 To start local
 
 ```bash
-$ air
+air
 ```
 
 To build the application
 
 ```bash
-$ go build -o /build/server .
+go build -o /build/server .
 ```
 
 To start the application from build file
