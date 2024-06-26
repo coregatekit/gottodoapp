@@ -15,3 +15,14 @@ type TodoHandler struct {
 func NewTodoHandler(db *gorm.DB) *TodoHandler {
 	return &TodoHandler{db}
 }
+
+func (t *TodoHandler) GetAllTodos() ([]Todo, error) {
+	var todos []Todo
+	t.db.Find(&todos)
+
+	if t.db.Error != nil {
+		return nil, t.db.Error
+	}
+
+	return todos, nil
+}
