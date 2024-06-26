@@ -54,3 +54,20 @@ func (t *TodoHandler) UpdateCompleted(id int) error {
 
 	return nil
 }
+
+func (t *TodoHandler) DeleteTodo(id int) error {
+	todo := Todo{}
+	t.db.First(&todo, id)
+
+	if t.db.Error != nil {
+		return t.db.Error
+	}
+
+	t.db.Delete(&todo)
+
+	if t.db.Error != nil {
+		return t.db.Error
+	}
+
+	return nil
+}
