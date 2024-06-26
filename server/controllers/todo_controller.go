@@ -67,3 +67,26 @@ func UpdateTodoCompleted(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Todo updated"})
 }
+
+func DeleteTodo(c *gin.Context) {
+	var err error
+	var id int
+	idStr := c.Param("id")
+
+	id, err = strconv.Atoi(idStr)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	td := models.NewTodoHandler(models.DB)
+	err = td.DeleteTodo(id)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Todo deleted"})
+}
