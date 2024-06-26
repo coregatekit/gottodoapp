@@ -7,3 +7,11 @@ type Todo struct {
 	Title     string `json:"title"`
 	Completed bool   `json:"completed"`
 }
+
+type TodoHandler struct {
+	db *gorm.DB
+}
+
+func NewTodoHandler(db *gorm.DB) *TodoHandler {
+	return &TodoHandler{db}
+}
