@@ -28,7 +28,7 @@ func (t *TodoHandler) GetAllTodos() ([]Todo, error) {
 }
 
 func (t *TodoHandler) NewTodo(todo Todo) (Todo, error) {
-	t.db.Create(todo)
+	t.db.Create(&todo)
 
 	if t.db.Error != nil {
 		return Todo{}, t.db.Error
