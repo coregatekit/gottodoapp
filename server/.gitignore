@@ -30,3 +30,4 @@ tmp/
 
 # database file
 todo.db
+data/
