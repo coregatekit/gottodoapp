@@ -19,10 +19,10 @@ function InputTodo() {
     <div className="mt-8 text-center">
       <input
         type="text"
-        className="border border-gray-400 p-2"
+        className="border rounded border-gray-400 p-2"
         placeholder="Add a new task"
       />
-      <button className="bg-indigo-600 text-white p-2 ml-2">Add</button>
+      <button className="bg-indigo-600 rounded text-white p-2 ml-2">Add</button>
     </div>
   );
 }
@@ -30,13 +30,33 @@ function InputTodo() {
 function TodoList() {
   const todos = ['Task 1', 'Task 2', 'Task 3'];
 
+  const handleDeleteTodo = (index: number) => {
+    alert(`Delete todo at index ${index}`);
+  };
   return (
     <div className="mt-8 text-center">
-      <h2 className="text-2xl font-bold">Todo List</h2>
-      <ul className="mt-4">
+      <ul className="mt-4 space-y-2">
         {todos.map((todo, index) => (
-          <li key={index} className="text-lg">
+          <li key={index} className="text-lg flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-indigo-600 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5zm1-2a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z"
+                clipRule="evenodd"
+              />
+            </svg>
             {todo}
+            <button
+              className="text-red-600 ml-2"
+              // onClick={() => handleDeleteTodo(index)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
